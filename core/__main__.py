@@ -15,7 +15,7 @@ def get_public_ip():
     except Exception as e:
         logging.error('Error while retrieving public IP')
         logging.exception(e)
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': "internal error"}), 500
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
