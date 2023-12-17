@@ -5,6 +5,12 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 app = Flask(__name__)
 
+@app.route('/', methods=['GET'])
+def index():
+    logging.info('Request received from %s', request.remote_addr)
+    logging.info("Sending index page")
+    return jsonify({'message': 'To get your IP, send a GET request to /ip'})
+
 @app.route('/ip', methods=['GET'])
 def get_public_ip():
     try:

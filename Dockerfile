@@ -12,6 +12,8 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+VOLUME [ "/var/log" ]
+
 EXPOSE 5000/tcp
 
 CMD ["python", "core/__main__.py"]
