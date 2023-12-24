@@ -1,22 +1,11 @@
 from flask import Flask, request, jsonify
 import logging
-import http.client
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
-def index():
-    client = http.client.HTTPConnection('localhost', 5000)
-    client.request('GET', '/ip')
-    response = client.getresponse()
-    if response.status != 200:
-        return jsonify({'error': 'internal error'}), 500
-    data = response.read()
-    return data.decode('utf-8')
-
-@app.route('/ip', methods=['GET'])
 def get_public_ip():
     try:
         logging.info('Request received from %s', request.remote_addr)
