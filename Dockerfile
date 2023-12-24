@@ -12,7 +12,9 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-VOLUME [ "/var/log" ]
+ENV LOG_DIR="/var/log/app"
+
+VOLUME [ "$LOG_DIR" ]
 
 EXPOSE 5000/tcp
 
