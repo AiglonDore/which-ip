@@ -18,4 +18,4 @@ VOLUME [ "$LOG_DIR" ]
 
 EXPOSE 5000/tcp
 
-CMD ["python", "core/__main__.py"]
+CMD ["python", "app.py"]
