@@ -20,6 +20,15 @@ def get_public_ip():
         logging.exception(e)
         return Response("Internal error", status=500, mimetype="text/plain")
 
+@app.route("/health", methods=["GET"])
+def health_check():
+    try:
+        return Response("OK", mimetype="text/plain")
+    except Exception as e:
+        logging.error("Error while checking health")
+        logging.exception(e)
+        return Response("Internal error", status=500, mimetype="text/plain")
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
